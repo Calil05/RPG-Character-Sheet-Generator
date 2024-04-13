@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class LoginPageComponent {
 
+  option: string = 'login';
+
+  toggleOption(selectedOption: string) {
+    this.option = selectedOption
+  }
+
 }
