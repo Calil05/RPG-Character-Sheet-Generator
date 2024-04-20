@@ -1,131 +1,166 @@
 body {
-    background: rgb(2, 0, 36);
-    background: rgb(2,0,36);
-    background: linear-gradient(
-        90deg, 
-        rgba(2,0,36,1) 26%, 
-        rgba(3, 19, 66) 48%, 
-        rgba(5,41,82,1) 67%, 
-        rgba(16,56,108,1) 83%,
-        rgba(0,66,126,1) 100%
-    );
-    font-family: "Overpass" !important;
-  }
-  
+  background: rgb(2, 0, 36);
+  background: rgb(2,0,36);
+  background: linear-gradient(
+      90deg, 
+      rgba(2,0,36,1) 26%, 
+      rgba(3, 19, 66) 48%, 
+      rgba(5,41,82,1) 67%, 
+      rgba(16,56,108,1) 83%,
+      rgba(0,66,126,1) 100%
+  );
+  font-family: "Overpass" !important;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  height: 100vh;
+}
+
+.left-panel {
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.rpg-icon {
+  margin-bottom: 20px;
+  width: 130px; /* Adicionado para garantir que o ícone tenha o tamanho correto */
+}
+
+.rpg-icon img {
+  max-width: 100%;
+  height: auto;
+}
+
+.right-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 650px;
+  width: 100%;
+  max-height: calc(100vh - 40px); /* 40px for padding */
+  overflow-y: auto;
+}
+
+.content-container {
+  padding: 40px;
+}
+
+.title {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: "Exo 2";
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 56px;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 70%;
+  max-width: 300px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #555;
+}
+
+.form-group input:hover {
+  border-color: #555;
+}
+
+.options {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.options a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
+button {
+  width: calc(70% + 26px);
+  max-width: 300px;
+  padding: 12px;
+  background-color: #00427e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 24px;
+}
+
+button:hover {
+  background-color: #052952;
+}
+
+@media screen and (max-width: 768px) {
   .container {
-    display: flex;
-    height: 100vh;
+      grid-template-columns: 1fr;
   }
-  
-  .left-panel {
-    flex: 1;
-    color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    flex: 1.5
-  }
-  
-  .rpg-icon {
-    margin-bottom: 20px;
-  }
-  
-  .rpg-icon img {
-    width: 130px;
-    height: 130px;
-  }
-  
+
+  .left-panel,
   .right-panel {
-    flex: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+      padding: 10px;
   }
-  
+
   .login-container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 650px;
-    height: 70vh;
-    max-height: 100vh;
-    overflow-y: auto;
+      max-width: 100%;
   }
-  
-  .content-container {
-    padding: 40px;
-  }
-  
+
   .title {
-    font-size: 48px;
-    text-align: center;
-    margin-bottom: 40px;
-    font-family: "Exo 2";
-    font-weight: 600;
+      font-size: 36px;
+      margin-bottom: 20px;
   }
-  
+
   h2 {
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 56px;
-    margin-top: 20px;
-    font-weight: 500;
+      font-size: 32px;
+      margin-bottom: 40px;
   }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 70%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .form-group input:hover {
-    border-color: #555;
-  }
-  
-  .options {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .options a {
-    color: #2980b9;
-    text-decoration: none;
-  }
-  
-  .options a:hover {
-    text-decoration: underline;
-  }
-  
+
+  .form-group input,
   button {
-    width: calc(70% + 26px);
-    padding: 12px;
-    background-color: #00427e;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 24px;
+      width: 100%;
+      max-width: none;
   }
-  
-  button:hover {
-    background-color: #052952;
+
+  .options {
+      margin-top: 20px;
   }
-  
+}
