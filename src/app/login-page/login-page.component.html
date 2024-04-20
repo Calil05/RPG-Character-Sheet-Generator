@@ -17,12 +17,12 @@
       <div class="login-container" *ngIf="option === 'login'">
         <div class="content-container">
           <h2>Login</h2>
-          <form class="form-container">
+          <form class="form-container" (submit)="doLogin($event)">
             <div class="form-group">
-              <input type="text" id="username" name="username" placeholder="Username" required>
+              <input type="text" id="username" name="username" placeholder="Username" required [(ngModel)]="credentials.email">
             </div>
             <div class="form-group">
-              <input type="password" id="password" name="password" placeholder="Password" required>
+              <input type="password" id="password" name="password" placeholder="Password" required [(ngModel)]="credentials.passwd">
             </div>
             <div class="form-group">
               <button type="submit">Login</button>

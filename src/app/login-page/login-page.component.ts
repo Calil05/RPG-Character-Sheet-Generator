@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,23 +9,25 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginPageComponent {
   credentials = {
-    username: '',
-    password: ''
+    email: '',
+    passwd: ''
   };
 
-  option: string = 'login';
+  constructor(private authService: AuthService, private router: Router) { }
 
-  constructor(private authService: AuthService) { }
+  option: string = 'login';
 
   toggleOption(selectedOption: string) {
     this.option = selectedOption
   }
 
-  onSubmit() {
+  doLogin(event: Event) {
+    event.preventDefault();
     this.authService.login(this.credentials).subscribe(
       (response) => {
         this.authService.setAuthToken(response.token);
-        console.warn("Logged in")
+        console.warn("Logged in");
+        this.router.navigate(['/main-screen']);
       },
       (error) => {
         console.error("ERROR! ", error)

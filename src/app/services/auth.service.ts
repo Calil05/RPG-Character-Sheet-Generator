@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 interface Credentials {
-  username: string;
-  password: string;
+  email: string;
+  passwd: string;
 }
 
 interface LoginResponse {

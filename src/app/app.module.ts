@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from './login-page/login-page.module';
 import { MainScreenModule } from './main-screen/main-screen.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +13,7 @@ import { MainScreenModule } from './main-screen/main-screen.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     LoginPageModule,
     MainScreenModule
   ],
