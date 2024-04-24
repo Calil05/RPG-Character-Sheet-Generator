@@ -1,7 +1,7 @@
 export interface UserInterface {
     id?: string;
-    username?: string;
+    name?: string;
     email?: string;
     passwd?: string;
-    accessLevel?: string;
+    access_level?: string;
 }

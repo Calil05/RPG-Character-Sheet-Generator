@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserInterface } from '../interfaces/user-interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
+import { passwordMatchValidator } from '../validators/password-match-validator';
 
 @Component({
   selector: 'app-login-page',
@@ -16,32 +18,43 @@ export class LoginPageComponent {
   };
 
   registerForm: FormGroup;
+  submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { 
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userService: UserService, private router: Router) { 
 
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
     }, {
-      validators: this.passwordMatchValidator
+      validator: passwordMatchValidator
     });
+  }
 
+  onSubmit() {
+    this.submitted = true;
+
+    console.warn(this.registerForm)
+
+    if(this.registerForm.valid) {
+      const userData: UserInterface = {
+        name: this.registerForm.value.username,
+        email: this.registerForm.value.email,
+        passwd: this.registerForm.value.password,
+        access_level: 'USER'
+      };
+
+      this.userService.createUser(userData).subscribe(
+        success => console.log("User Created"),
+        error => console.error("Error"),
+        () => console.log("Requent Completed")
+      );
+      this.router.navigate(['/main-screen']);
+    }
   }
 
   option: string = 'login';
-
-  passwordMatchValidator(formGroup: FormGroup) {
-    const password = formGroup.get('password');
-    const confirmPassword = formGroup.get('confirmPassword');
-
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
-      confirmPassword.setErrors({ passwordMismatch: true });
-    } else {
-      confirmPassword.setErrors(null);
-    }
-  }
 
   toggleOption(selectedOption: string) {
     this.option = selectedOption
@@ -59,23 +72,6 @@ export class LoginPageComponent {
         console.error("ERROR! ", error)
       }
     );
-  }
-
-  onSubmit() {
-    if (this.registerForm.valid) {
-      const formData = this.registerForm.value;
-      delete formData.confirmPassword;
-
-      this.authService.signup(formData).subscribe(
-        (response) => {
-          console.warn("User registered successfully!");
-          // Redirect to login page or wherever you want
-        },
-        (error) => {
-          console.error("ERROR! ", error);
-        }
-      );
-    }
   }
 
 }
