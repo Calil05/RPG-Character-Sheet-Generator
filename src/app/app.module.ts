@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginPageModule } from './login-page/login-page.module';
 import { MainScreenModule } from './main-screen/main-screen.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { MainScreenModule } from './main-screen/main-screen.module';
     HttpClientModule,
     ReactiveFormsModule,
     LoginPageModule,
-    MainScreenModule
+    MainScreenModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

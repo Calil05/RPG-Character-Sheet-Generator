@@ -55,3 +55,6 @@ table {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Overpass', sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
